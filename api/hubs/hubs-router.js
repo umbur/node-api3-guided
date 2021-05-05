@@ -113,7 +113,7 @@ router.post('/:id/messages', logger, idChecker, (req, res, next) => {
     .then(message => {
       res.status(210).json(message);
     })
-    .catch();
+    .catch(next);
 });
 
 const errorHandler = (err, req, res, next) => { // eslint-disable-line
