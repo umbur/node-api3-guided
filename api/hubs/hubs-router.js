@@ -90,9 +90,11 @@ async function validateMessage(req, res, next) {
     const validated = await messageSchema.validate(req.body, {
       stripUnknown: true,
     })
+    req.body = validated
+    next()
   } catch (err) {
     // here validation failed
-    next({ status: })
+    next({ status: 400, message: err.message })
   }
 }
 
