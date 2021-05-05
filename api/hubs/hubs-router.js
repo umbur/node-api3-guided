@@ -8,6 +8,7 @@ const router = express.Router();
 function logger(req, res, next) {
   console.log(`
     ${req.method} request to ${req.baseUrl} endpoint!
+    req.params.id 
   `)
   next()
 }
