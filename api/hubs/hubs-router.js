@@ -78,15 +78,18 @@ function validateMessage(req, res, next) {
 
 router.post(
   '/:id/messages',
-  logger, validateMessage, idChecker, (req, res, next) => {
-  const messageInfo = { ...req.body, hub_id: req.params.id };
+  logger,
+  validateMessage,
+  idChecker,
+  (req, res, next) => {
+    const messageInfo = { ...req.body, hub_id: req.params.id };
 
-  Messages.add(messageInfo)
-    .then(message => {
-      res.status(210).json(message);
-    })
-    .catch(next);
-});
+    Messages.add(messageInfo)
+      .then(message => {
+        res.status(210).json(message);
+      })
+      .catch(next);
+  });
 
 router.use((err, req, res, next) => { // eslint-disable-line
   res.status(err.status || 500).json({
