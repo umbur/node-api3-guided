@@ -36,6 +36,7 @@ async function idChecker(req, res, next) {
         message: `hub with id ${req.params.id} not found!`,
       });
     } else {
+      req.hub = hub
       next()
     }
   } catch (err) {
