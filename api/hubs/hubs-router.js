@@ -30,7 +30,7 @@ router.get('/', logger, (req, res, next) => {
 
 router.use(logger)
 
-router.get('/:id', (req, res) => {
+router.get('/:id', logger, (req, res) => {
   Hubs.findById(req.params.id)
     .then(hub => {
       if (hub) {
