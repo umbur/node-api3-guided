@@ -78,9 +78,9 @@ function validateMessage(req, res, next) {
 
 router.post(
   '/:id/messages',
-  logger,
-  validateMessage,
-  idChecker,
+    logger,
+    validateMessage,
+    idChecker,
   (req, res, next) => {
     const messageInfo = { ...req.body, hub_id: req.params.id };
 
