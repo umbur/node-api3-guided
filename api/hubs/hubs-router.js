@@ -82,14 +82,12 @@ router.post('/:id/messages', logger, idChecker, (req, res, next) => {
     .catch(next);
 });
 
-const errorHandler = (err, req, res, next) => { // eslint-disable-line
+router.use((err, req, res, next) => { // eslint-disable-line
   res.status(err.status || 500).json({
     note: 'something nasty went down in hubs router',
     message: err.message,
     stack: err.stack,
   })
-}
-
-router.use(errorHandler) // this traps errors happening "before"
+}) // this traps errors happening "before"
 
 module.exports = router;
