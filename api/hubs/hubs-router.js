@@ -77,30 +77,23 @@ const messageSchema = yup.object({
     .trim()
     .required('sender required')
     .min(3, 'sender must be 3 chars')
-    .max(40, 'sender must be under 40 chars')
-    
+    .max(40, 'sender must be under 40 chars'),
+  text: yup.string()
+    .trim()
+    .required('text required')
+    .min(3, 'text must be 3 chars')
+    .max(40, 'text must be under 40 chars'),
 })
 
-function validateMessage(req, res, next) {
-  if (
-    !req.body.text ||
-    !req.body.text.trim() ||
-    !req.body.sender ||
-    !req.body.sender.trim() ||
-    req.body.text.length < 4 ||
-    req.body.sender.length < 4
-  ) {
-    next({ status: 400, message: 'text and sender required' })
-  } else {
-    next()
-  }
+async function validateMessage(req, res, next) {
+  
 }
 
 router.post(
   '/:id/messages',
-    logger,
-    validateMessage,
-    idChecker,
+  logger,
+  validateMessage,
+  idChecker,
   (req, res, next) => {
     const messageInfo = { ...req.body, hub_id: req.params.id };
 
