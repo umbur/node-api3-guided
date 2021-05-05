@@ -12,9 +12,7 @@ function logger(req, res, next) {
   next()
 }
 
-const validation = [logger, logger, logger, logger]
-
-router.get('/', ...validation, (req, res, next) => {
+router.get('/', logger, (req, res, next) => {
   Hubs.find(req.query)
     .then(hubs => {
       res.status(200).json(hubs);
