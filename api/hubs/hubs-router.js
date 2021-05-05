@@ -81,11 +81,7 @@ router.delete('/:id', logger, idChecker, (req, res) => {
 router.put('/:id', logger, idChecker, (req, res) => {
   Hubs.update(req.params.id, req.body)
     .then(hub => {
-      if (hub) {
-        res.status(200).json(hub);
-      } else {
-        res.status(404).json({ message: 'The hub could not be found' });
-      }
+      res.status(200).json(hub);
     })
     .catch(error => {
       // log error to server
