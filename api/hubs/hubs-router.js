@@ -73,7 +73,14 @@ router.get('/:id/messages', logger, idChecker, (req, res, next) => {
 });
 
 function validateMessage(req, res, next) {
-  req.body.text !== '' || req.body.sender !== null
+  if (
+    req.body.text !== '' ||
+    req.body.text !== null ||
+    req.body.sender !== '' ||
+    req.body.sender !== null
+  ) {
+
+  }
 }
 
 router.post(
