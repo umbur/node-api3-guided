@@ -79,7 +79,7 @@ function validateMessage(req, res, next) {
     req.body.sender === '' ||
     req.body.sender === null
   ) {
-    next({  })
+    next({ status: 400, message: 'text and sender required' })
   } else {
     next()
   }
