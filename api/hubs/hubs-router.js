@@ -123,7 +123,7 @@ router.post('/:id/messages', logger, idChecker, (req, res) => {
 });
 
 router.use((err, req, res, next) => {
-  
+  res.status(err.status || 500).json()
 })
 
 module.exports = router;
