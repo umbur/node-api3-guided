@@ -122,7 +122,7 @@ router.post('/:id/messages', logger, idChecker, (req, res) => {
     });
 });
 
-router.use((err, req, res, next) => {
+router.use((err, req, res, next) => { // this traps errors happening ^
   res.status(err.status || 500).json({
     note: 'something nasty went down in hubs router',
     message: err.message,
