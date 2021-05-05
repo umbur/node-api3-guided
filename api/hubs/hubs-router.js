@@ -66,7 +66,7 @@ router.post('/', (req, res) => {
 
 router.delete('/:id', logger, idChecker, (req, res) => {
   Hubs.remove(req.params.id)
-    .then(count => {
+    .then(() => {
       res.status(200).json({ message: 'The hub has been nuked' });
     })
     .catch(error => {
