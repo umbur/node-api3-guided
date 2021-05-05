@@ -95,7 +95,7 @@ router.post(
 
     Messages.add(messageInfo)
       .then(message => {
-        res.status(210).json(message);
+        res.status(201).json(message);
       })
       .catch(next);
   });
