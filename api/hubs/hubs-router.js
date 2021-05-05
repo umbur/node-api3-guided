@@ -28,7 +28,15 @@ router.get('/', logger, (req, res, next) => {
     });
 });
 
-function idChecker()
+async function idChecker(req, res, next) {
+  try {
+
+  } catch (err) {
+    res.status(500).json({
+      message: 'Error retrieving the hub',
+    });
+  }
+}
 
 router.get('/:id', logger, (req, res) => {
   Hubs.findById(req.params.id)
