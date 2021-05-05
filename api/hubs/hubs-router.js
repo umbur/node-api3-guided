@@ -32,18 +32,13 @@ async function idChecker(req, res, next) {
   try {
     const hub = await Hubs.findById(req.params.id)
     if (!hub) {
-      res.status(404).json({
-        message: `hub with id ${req.params.id} not found!`,
-      });
+      next({ status: 404, message: `hub with id ${req.params.id} not found!` })
     } else {
       req.hub = hub
       next()
     }
   } catch (err) {
     next(err)
-    res.status(500).json({
-      message: err.message,
-    });
   }
 }
 
