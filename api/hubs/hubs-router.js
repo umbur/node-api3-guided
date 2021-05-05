@@ -31,6 +31,11 @@ router.get('/', logger, (req, res, next) => {
 async function idChecker(req, res, next) {
   try {
     const hub = await Hubs.findById(req.params.id)
+    if (!hub) {
+      res.status(404).json({
+        message: `hub with id ${req.params.id} not found!`,
+      });
+    }
   } catch (err) {
     res.status(500).json({
       message: err.message,
