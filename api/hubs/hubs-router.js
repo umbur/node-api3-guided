@@ -73,8 +73,12 @@ router.get('/:id/messages', logger, idChecker, (req, res, next) => {
 });
 
 const messageSchema = yup.object({
-  sender: yup.string().trim().required('')
-  text:
+  sender: yup.string()
+    .trim()
+    .required('sender required')
+    .min(3, 'sender must be 3 chars')
+    .max(40, 'sender must be under 40 chars')
+    
 })
 
 function validateMessage(req, res, next) {
