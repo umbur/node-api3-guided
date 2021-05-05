@@ -122,7 +122,7 @@ router.post('/:id/messages', logger, idChecker, (req, res) => {
     });
 });
 
-const errorHandler = (err, req, res, next) => { // this traps errors happening ^
+const errorHandler = (err, req, res, next) => { // eslint-disable-line
   res.status(err.status || 500).json({
     note: 'something nasty went down in hubs router',
     message: err.message,
