@@ -75,7 +75,9 @@ router.get('/:id/messages', logger, idChecker, (req, res, next) => {
 function validateMessage(req, res, next) {
   if (
     !req.body.text ||
-    !req.body.sender
+    !req.body.sender ||
+    req.body.text.length < 4 ||
+    req.body.sender.length < 4
   ) {
     next({ status: 400, message: 'text and sender required' })
   } else {
