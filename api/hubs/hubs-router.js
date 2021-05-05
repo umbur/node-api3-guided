@@ -9,7 +9,7 @@ function logger(req, res, next) {
   console.log(`
     ${req.method} request to ${req.baseUrl} endpoint!
     req.body ${JSON.stringify(req.body)}
-    req.params.id ${req.params.id} TODO fix!!!
+    req.params.id ${req.params.id}
   `)
   next()
 }
