@@ -40,6 +40,7 @@ async function idChecker(req, res, next) {
       next()
     }
   } catch (err) {
+    next(err)
     res.status(500).json({
       message: err.message,
     });
@@ -50,18 +51,12 @@ router.get('/:id', logger, idChecker, (req, res) => {
   res.json(req.hub)
 });
 
-router.post('/', (req, res) => {
+router.post('/', (req, res, next) => {
   Hubs.add(req.body)
     .then(hub => {
       res.status(201).json(hub);
     })
-    .catch(error => {
-      // log error to server
-      console.log(error);
-      res.status(500).json({
-        message: 'Error adding the hub',
-      });
-    });
+    .catch(next);
 });
 
 router.delete('/:id', logger, idChecker, (req, res, next) => {
