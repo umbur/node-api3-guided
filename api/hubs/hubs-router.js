@@ -12,6 +12,8 @@ function logger(req, res, next) {
   next()
 }
 
+const validation = [logger, logger, logger, logger]
+
 router.get('/', [logger, logger, logger, logger], (req, res, next) => {
   Hubs.find(req.query)
     .then(hubs => {
