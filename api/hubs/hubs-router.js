@@ -86,7 +86,12 @@ const messageSchema = yup.object({
 })
 
 async function validateMessage(req, res, next) {
-  
+  try {
+    const validated = 
+  } catch (err) {
+    // here validation failed
+    next(err)
+  }
 }
 
 router.post(
