@@ -78,7 +78,7 @@ router.delete('/:id', logger, idChecker, (req, res) => {
     });
 });
 
-router.put('/:id', (req, res) => {
+router.put('/:id', logger, idChecker, (req, res) => {
   Hubs.update(req.params.id, req.body)
     .then(hub => {
       if (hub) {
