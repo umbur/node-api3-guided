@@ -64,7 +64,7 @@ router.post('/', (req, res) => {
     });
 });
 
-router.delete('/:id', (req, res) => {
+router.delete('/:id', logger, idChecker, (req, res) => {
   Hubs.remove(req.params.id)
     .then(count => {
       if (count > 0) {
