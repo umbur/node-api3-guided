@@ -64,46 +64,28 @@ router.post('/', (req, res) => {
     });
 });
 
-router.delete('/:id', logger, idChecker, (req, res) => {
+router.delete('/:id', logger, idChecker, (req, res, next) => {
   Hubs.remove(req.params.id)
     .then(() => {
       res.status(200).json({ message: 'The hub has been nuked' });
     })
-    .catch(error => {
-      // log error to server
-      console.log(error);
-      res.status(500).json({
-        message: 'Error removing the hub',
-      });
-    });
+    .catch(next);
 });
 
-router.put('/:id', logger, idChecker, (req, res) => {
+router.put('/:id', logger, idChecker, (req, res, next) => {
   Hubs.update(req.params.id, req.body)
     .then(hub => {
       res.status(200).json(hub);
     })
-    .catch(error => {
-      // log error to server
-      console.log(error);
-      res.status(500).json({
-        message: 'Error updating the hub',
-      });
-    });
+    .catch(next);
 });
 
-router.get('/:id/messages', logger, idChecker, (req, res) => {
+router.get('/:id/messages', logger, idChecker, (req, res, next) => {
   Hubs.findHubMessages(req.params.id)
     .then(messages => {
       res.status(200).json(messages);
     })
-    .catch(error => {
-      // log error to server
-      console.log(error);
-      res.status(500).json({
-        message: 'Error getting the messages for the hub',
-      });
-    });
+    .catch(next);
 });
 
 router.post('/:id/messages', logger, idChecker, (req, res, next) => {
