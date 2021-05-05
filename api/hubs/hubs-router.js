@@ -19,13 +19,7 @@ router.get('/', logger, (req, res, next) => {
     .then(hubs => {
       res.status(200).json(hubs);
     })
-    .catch(error => {
-      // log error to server
-      console.log(error);
-      res.status(500).json({
-        message: 'Error retrieving the hubs',
-      });
-    });
+    .catch(next);
 });
 
 async function idChecker(req, res, next) {
