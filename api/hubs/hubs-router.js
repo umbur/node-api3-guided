@@ -35,6 +35,8 @@ async function idChecker(req, res, next) {
       res.status(404).json({
         message: `hub with id ${req.params.id} not found!`,
       });
+    } else {
+      next()
     }
   } catch (err) {
     res.status(500).json({
@@ -43,7 +45,7 @@ async function idChecker(req, res, next) {
   }
 }
 
-router.get('/:id', logger, (req, res) => {
+router.get('/:id', logger, idChecker, (req, res) => {
   Hubs.findById(req.params.id)
     .then(hub => {
       if (hub) {
