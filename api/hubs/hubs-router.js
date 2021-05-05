@@ -123,7 +123,11 @@ router.post('/:id/messages', logger, idChecker, (req, res) => {
 });
 
 router.use((err, req, res, next) => {
-  res.status(err.status || 500).json()
+  res.status(err.status || 500).json({
+    note: 'something nasty went down in hubs router',
+    message: err.message,
+    stack: err.stack,
+  })
 })
 
 module.exports = router;
