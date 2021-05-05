@@ -130,6 +130,6 @@ const errorHandler = (err, req, res, next) => { // eslint-disable-line
   })
 }
 
-router.use(errorHandler)
+router.use(errorHandler) // this traps errors happening "before"
 
 module.exports = router;
