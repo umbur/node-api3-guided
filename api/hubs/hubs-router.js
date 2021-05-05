@@ -114,11 +114,7 @@ router.post('/:id/messages', logger, idChecker, (req, res, next) => {
       res.status(210).json(message);
     })
     .catch(error => {
-      // log error to server
-      console.log(error);
-      res.status(500).json({
-        message: 'Error adding message to the hub',
-      });
+      next(error)
     });
 });
 
