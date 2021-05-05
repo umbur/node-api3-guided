@@ -14,7 +14,7 @@ function logger(req, res, next) {
 
 const validation = [logger, logger, logger, logger]
 
-router.get('/', [logger, logger, logger, logger], (req, res, next) => {
+router.get('/', ...validation, (req, res, next) => {
   Hubs.find(req.query)
     .then(hubs => {
       res.status(200).json(hubs);
