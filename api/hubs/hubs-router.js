@@ -92,7 +92,7 @@ router.put('/:id', logger, idChecker, (req, res) => {
     });
 });
 
-router.get('/:id/messages', idChecker, (req, res) => {
+router.get('/:id/messages', logger, idChecker, (req, res) => {
   Hubs.findHubMessages(req.params.id)
     .then(messages => {
       res.status(200).json(messages);
@@ -106,7 +106,7 @@ router.get('/:id/messages', idChecker, (req, res) => {
     });
 });
 
-router.post('/:id/messages', idChecker, (req, res) => {
+router.post('/:id/messages', logger, idChecker, (req, res) => {
   const messageInfo = { ...req.body, hub_id: req.params.id };
 
   Messages.add(messageInfo)
