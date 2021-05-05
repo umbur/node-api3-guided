@@ -72,6 +72,11 @@ router.get('/:id/messages', logger, idChecker, (req, res, next) => {
     .catch(next);
 });
 
+const messageSchema = yup.object({
+  sender: yup.string().trim().required('')
+  text:
+})
+
 function validateMessage(req, res, next) {
   if (
     !req.body.text ||
