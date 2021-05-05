@@ -75,7 +75,9 @@ router.get('/:id/messages', logger, idChecker, (req, res, next) => {
 function validateMessage(req, res, next) {
   if (
     !req.body.text ||
+    !req.body.text.trim() ||
     !req.body.sender ||
+    !req.body.sender.trim() ||
     req.body.text.length < 4 ||
     req.body.sender.length < 4
   ) {
