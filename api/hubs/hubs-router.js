@@ -88,11 +88,11 @@ const messageSchema = yup.object({
 async function validateMessage(req, res, next) {
   try {
     const validated = await messageSchema.validate(req.body, {
-      stri
+      stripUnknown: true,
     })
   } catch (err) {
     // here validation failed
-    next(err)
+    next({ status: })
   }
 }
 
