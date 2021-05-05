@@ -47,21 +47,7 @@ async function idChecker(req, res, next) {
 }
 
 router.get('/:id', logger, idChecker, (req, res) => {
-  Hubs.findById(req.params.id)
-    .then(hub => {
-      if (hub) {
-        res.status(200).json(hub);
-      } else {
-        res.status(404).json({ message: 'Hub not found' });
-      }
-    })
-    .catch(error => {
-      // log error to server
-      console.log(error);
-      res.status(500).json({
-        message: 'Error retrieving the hub',
-      });
-    });
+  res.json(req.hub)
 });
 
 router.post('/', (req, res) => {
