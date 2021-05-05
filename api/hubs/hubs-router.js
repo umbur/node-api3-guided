@@ -12,7 +12,7 @@ function logger(req, res, next) {
   next()
 }
 
-router.get('/', logger, (req, res) => {
+router.get('/', logger, (req, res, next) => {
   Hubs.find(req.query)
     .then(hubs => {
       res.status(200).json(hubs);
