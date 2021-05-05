@@ -6,7 +6,9 @@ const Messages = require('../messages/messages-model.js');
 const router = express.Router();
 
 function logger(req, res, next) {
-  
+  console.log(`
+    ${req.method} request to ${req.baseUrl}
+  `)
 }
 
 router.get('/', (req, res) => {
