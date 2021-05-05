@@ -1,3 +1,6 @@
+const yup = require('yup');
+const Hubs = require('./hubs-model.js');
+
 function logger(req, res, next) {
   console.log(`
     ${req.method} request to ${req.baseUrl} endpoint!
@@ -47,4 +50,4 @@ async function validateMessage(req, res, next) {
   }
 }
 
-module.exports 
+module.exports = { validateMessage, logger, idChecker, }
