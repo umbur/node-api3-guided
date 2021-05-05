@@ -14,7 +14,9 @@ function logger(req, res, next) {
   next()
 }
 
-router.get('/', logger, (req, res, next) => {
+router.use(logger)
+
+router.get('/', (req, res, next) => {
   Hubs.find(req.query)
     .then(hubs => {
       res.status(200).json(hubs);
@@ -28,7 +30,7 @@ router.get('/', logger, (req, res, next) => {
     });
 });
 
-router.use(logger)
+
 
 router.get('/:id', logger, (req, res) => {
   Hubs.findById(req.params.id)
