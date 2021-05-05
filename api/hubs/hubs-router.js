@@ -72,7 +72,13 @@ router.get('/:id/messages', logger, idChecker, (req, res, next) => {
     .catch(next);
 });
 
-router.post('/:id/messages', logger, validateMessage, idChecker, (req, res, next) => {
+function validateMessage(req, res, next) {
+  next()
+}
+
+router.post(
+  '/:id/messages',
+  logger, validateMessage, idChecker, (req, res, next) => {
   const messageInfo = { ...req.body, hub_id: req.params.id };
 
   Messages.add(messageInfo)
