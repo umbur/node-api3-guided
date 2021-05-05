@@ -7,8 +7,9 @@ const router = express.Router();
 
 function logger(req, res, next) {
   console.log(`
-    ${req.method} request to ${req.baseUrl}
+    ${req.method} request to ${req.baseUrl} endpoint!
   `)
+  next()
 }
 
 router.get('/', (req, res) => {
