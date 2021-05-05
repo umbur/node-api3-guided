@@ -122,8 +122,8 @@ router.post('/:id/messages', logger, idChecker, (req, res) => {
     });
 });
 
-// err 1
-
-// err 2
+router.use((err, req, res, next) => {
+  
+})
 
 module.exports = router;
