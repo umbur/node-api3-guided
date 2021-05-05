@@ -88,7 +88,7 @@ const messageSchema = yup.object({
 async function validateMessage(req, res, next) {
   try {
     const validated = await messageSchema.validate(req.body, {
-      stripUnknown: false,
+      stripUnknown: true,
     })
     req.body = validated
     next()
